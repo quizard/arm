@@ -91,7 +91,7 @@
     },
     "kind": "Storage",
     "properties": {}
-}
+},
         {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
