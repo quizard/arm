@@ -81,7 +81,17 @@
         }
     },
     "resources": [
-        
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('SG')]",
+            "apiVersion": "2016-01-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        },
         {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
@@ -107,7 +117,7 @@
                     "osDisk": {
                         "name": "osdisk",
                         "vhd": {
-                        "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))).primaryEndpoints.blob, 'vhds/osdisk.vhd')]"
+                        "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('SG'))).primaryEndpoints.blob, 'vhds/osdisk.vhd')]"
                                },
                         "createOption": "FromImage",
                         "caching": "ReadWrite"
