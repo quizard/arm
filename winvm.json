@@ -81,17 +81,7 @@
         }
     },
     "resources": [
-        {
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "[parameters('SG')]",
-    "apiVersion": "2016-01-01",
-    "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "Standard_LRS"
-    },
-    "kind": "Storage",
-    "properties": {}
-},
+        
         {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
