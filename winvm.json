@@ -81,7 +81,7 @@
         }
     },
     "resources": [
-        
+        {
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[parameters('SG')]",
             "apiVersion": "2016-01-01",
