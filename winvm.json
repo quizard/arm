@@ -92,26 +92,14 @@
             "kind": "Storage",
             "properties": {}
         },
-        {  
-      "type":"Microsoft.Compute/disks",
-      "apiVersion":"2017-03-30",
-      "name":"[concat(parameters('vmName'), '_OSdisk')]",
-      "location":"[parameters('location')]",
-      "properties":{  
-         "creationData":{  
-            "createOption":"empty",
-            "sourceUri":"[parameters('osDiskVhdUri')]"
-         },
-         "osType":"Windows"
-      }
-   },   
+        
         {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[parameters('vmName')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts/', parameters('SG'))]",
-                "[resourceId('Microsoft.Compute/disks', concat(parameters('vmName'), '_OSdisk'))]",
+           
                 
             ],
             "location": "[parameters('location')]",
@@ -133,6 +121,11 @@
                         "version": "latest"
                     },
                     "osDisk": {
+            "name": "osdisk",
+            "vhd": {
+              "uri": "[concat('http://', parameters('SG'),'.blob.core.windows.net/vhds/', parameters('vmName'), '-osdisk.vhd')]"
+            },
+            "caching": "ReadWrite",
             "createOption": "FromImage"
           },
                     "copy": [
