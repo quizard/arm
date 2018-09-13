@@ -119,13 +119,15 @@
 						"sku": "[parameters('osSku')]",
 						"version": "latest"
 					}
+				},
+				"networkProfile": {
+					"networkInterfaces": [{
+						"id": "[parameters('nicId')]"
+					}]
 				}
-			},
-			"networkProfile": {
-				"networkInterfaces": [{
-					"id": "[parameters('nicId')]"
-				}]
 			}
+
+
 
 		}
 	]
