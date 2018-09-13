@@ -140,7 +140,6 @@
                         }
                     ]
                 },
-                    
                 "networkProfile": {
                     "networkInterfaces": [
                         {
@@ -150,6 +149,7 @@
                 }
             }
         }
-    }
+    ]
 }
+
         
