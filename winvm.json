@@ -94,8 +94,12 @@
         },
         {
     "type": "Microsoft.Compute/disks",
-    "name": "[concat(variables('vmName'),'-datadisk1')]",
+    "name": "[concat(variables('vmName'),'-osdisk')]",
     "apiVersion": "2017-03-30",
+     "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/', parameters('SG'))]",
+                "[concat(variables('vmName'),'-osdisk')]"
+            ],
     "location": "[resourceGroup().location]",
     "sku": {
         "name": "Standard_LRS"
@@ -112,7 +116,8 @@
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[parameters('vmName')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts/', parameters('SG'))]",
+                
             ],
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
