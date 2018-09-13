@@ -92,32 +92,26 @@
             "kind": "Storage",
             "properties": {}
         },
-        {
-    "type": "Microsoft.Compute/disks",
-    "name": "[concat(variables('vmName'),'-osdisk')]",
-    "apiVersion": "2017-03-30",
-     "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/', parameters('SG'))]",
-                
-            ],
-    "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "Standard_LRS"
-    },
-    "properties": {
-        "creationData": {
-            "createOption": "Empty"
-        },
-        "diskSizeGB": 1023
-    }
-},
+        {  
+      "type":"Microsoft.Compute/disks",
+      "apiVersion":"2017-03-30",
+      "name":"[concat(parameters('vmName'), '_OSdisk')]",
+      "location":"[parameters('location')]",
+      "properties":{  
+         "creationData":{  
+            "createOption":"empty",
+            "sourceUri":"[parameters('osDiskVhdUri')]"
+         },
+         "osType":"Windows"
+      }
+   },   
         {
             "apiVersion": "2017-12-01",
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[parameters('vmName')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts/', parameters('SG'))]",
-                "[concat(variables('vmName'),'-osdisk')]"
+                "[resourceId('Microsoft.Compute/disks', concat(parameters('vmName'), '_OSdisk'))]",
                 
             ],
             "location": "[parameters('location')]",
@@ -146,7 +140,7 @@
 
             "caching": "ReadWrite",
 
-            "createOption": "FromImage"
+            "createOption": "attach"
 
           }
 
