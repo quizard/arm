@@ -124,7 +124,7 @@
                      "name": "[concat(parameters('vmName'), '-OSdisk')]",
 			
                      "vhd": {
-                         "uri": "[concat('https://', parameters('SG'), '.blob.core.windows.net/vhds/', parameters('VMName'),'disk1.vhd')]"
+                         "uri": "[concat('https://', parameters('SG'), '.blob.core.usgovcloudapi.net/vhds/', parameters('VMName'),'disk1.vhd')]"
                      },
                      "caching": "ReadWrite"
                     }
