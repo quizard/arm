@@ -98,7 +98,7 @@
     "apiVersion": "2017-03-30",
      "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts/', parameters('SG'))]",
-                "[concat(variables('vmName'),'-osdisk')]"
+                
             ],
     "location": "[resourceGroup().location]",
     "sku": {
@@ -117,6 +117,7 @@
             "name": "[parameters('vmName')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts/', parameters('SG'))]",
+                "[concat(variables('vmName'),'-osdisk')]"
                 
             ],
             "location": "[parameters('location')]",
