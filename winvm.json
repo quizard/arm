@@ -127,7 +127,7 @@
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
-          },
+          }
                     
                 "networkProfile": {
                     "networkInterfaces": [
@@ -138,5 +138,5 @@
                 }
             }
         }
-    
+    }
 }
