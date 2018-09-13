@@ -133,18 +133,8 @@
                         "version": "latest"
                     },
                     "osDisk": {
-            "name": "osdisk",
-            "vhd": {
-              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('SG')), '2016-01-01').primaryEndpoints.blob, 'osdisk.vhd')]"
-            },
-
-            "caching": "ReadWrite",
-
-            "createOption": "attach"
-
-          }
-
-        },
+            "createOption": "FromImage"
+          },
                     "copy": [
                         {
                             "name": "dataDisks",
