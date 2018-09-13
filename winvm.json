@@ -128,6 +128,18 @@
             "caching": "ReadWrite",
             "createOption": "FromImage"
           },
+                    "copy": [
+                        {
+                            "name": "dataDisks",
+                            "count": "[parameters('numberOfDataDisks')]",
+                            "input": {
+                                "diskSizeGB": "[parameters('dataDiskSizeInGB')]",
+                                "lun": "[copyIndex('dataDisks')]",
+                                "createOption": "Empty"
+                            }
+                        }
+                    ]
+                },
                     
                 "networkProfile": {
                     "networkInterfaces": [
