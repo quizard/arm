@@ -113,13 +113,22 @@
 					"adminPassword": "[parameters('adminPassword')]"
 				},
 				"storageProfile": {
-					"imageReference": {
-						"publisher": "[parameters('imagePublisher')]",
-						"offer": "[parameters('imageOffer')]",
-						"sku": "[parameters('osSku')]",
-						"version": "latest"
-					}
-				},
+                    "imageReference": {
+                        "publisher": "[parameters('imagePublisher')]",
+                        "offer": "[parameters('imageOffer')]",
+                        "sku": "[parameters('osSku')]",
+                        "version": "latest"
+                 },
+                 "osDisk": {
+                     "createOption": "FromImage",
+                     "name": "[concat(parameters('VMName')),'-OSdisk')]",
+                     "vhd": {
+                         "uri": "[concat('https://', parameters('SG'), '.blob.core.windows.net/vhds/', parameters('VMName'),'disk1.vhd')]"
+                     },
+                     "caching": "ReadWrite"
+                    }
+                 },
+
 				"networkProfile": {
 					"networkInterfaces": [{
 						"id": "[parameters('nicId')]"
