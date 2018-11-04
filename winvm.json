@@ -22,7 +22,7 @@
 		},
 		"vmSize": {
 			"type": "string",
-			"defaultValue": "Standard_D16s_v3",
+			"defaultValue": "Standard_D32_v3",
 			"metadata": {
 				"description": "Size of VM"
 			}
@@ -43,7 +43,7 @@
 		},
 		"osSku": {
 			"type": "string",
-			"defaultValue": "2016-Datacenter",
+			"defaultValue": "2019-Datacenter",
 			"metadata": {
 				"description": "OS sku for VM"
 			}
